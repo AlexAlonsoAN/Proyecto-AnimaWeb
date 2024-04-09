@@ -9,11 +9,11 @@ class User extends Model {
           primaryKey: true,
           autoIncrement: true,
         },
-        firstname: {
+        name: {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        lastname: {
+        surname: {
           type: DataTypes.STRING,
           allowNull: false,
         },
@@ -21,6 +21,15 @@ class User extends Model {
           type: DataTypes.STRING,
           allowNull: false,
           unique: true,
+        },
+        address: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+
+        phonenumber: {
+          type: DataTypes.STRING,
+          allowNull: false,
         },
         password: {
           type: DataTypes.STRING,
