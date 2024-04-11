@@ -11,19 +11,16 @@ class Product extends Model {
         },
         name: {
           type: DataTypes.STRING,
-          allowNull: false,
         },
         description: {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        pics: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
+        // pics: {
+        //   type: DataTypes.STRING,
+        // },
         stock: {
           type: DataTypes.STRING,
-          allowNull: false,
         },
         price: {
           type: DataTypes.STRING,
@@ -31,7 +28,6 @@ class Product extends Model {
         },
         featured: {
           type: DataTypes.STRING,
-          allowNull: false,
         },
       },
       {
