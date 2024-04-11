@@ -2,10 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Article } = require("../models");
 
-router.get("/", async (req, res) => {
-  const articles = await Article.findAll();
-  return res.json(articles);
-});
+// router.get("/", userController.index);
 
 router.post("/", async (req, res) => {
   // console.log(req.body);
