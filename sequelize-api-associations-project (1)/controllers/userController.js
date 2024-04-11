@@ -33,7 +33,9 @@ const userController = {
 
     return res.send("Usuario modificado con éxito!");
   },
-  destroy: async (req, res) => {},
+  destroy: async (req, res) => {
+    router.get("/", async (req, res) => {});
+  },
   // TODO: Escribir el método destroy.
 };
 

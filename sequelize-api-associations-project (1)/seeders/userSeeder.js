@@ -3,20 +3,24 @@ const { User } = require("../models");
 
 async function userSeeder() {
   const users = [];
-  for (let i = 0; i > 20; i++) {
-    const name = faker.person.fullname();
+  for (let i = 0; i < 20; i++) {
+    const name = faker.person.firstName();
     const newUser = {
       name,
-      surname: faker.internet.userName,
-      email: faker.internet.email({ firstname: name }),
-      // address: faker.,
+      surname: faker.person.lastName(),
+      email: faker.internet.email({ firstName: name }),
+      address: "Avenida 123",
       phonenumber: faker.phone.number(),
       password: "123",
     };
     users.push(newUser);
   }
-  await User.create(newUser);
-  console.log("Se corrió el seeder de usuarios");
+  try {
+    await User.bulkCreate(users);
+    console.log("Se corrió el seeder de usuarios");
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 module.exports = userSeeder;

@@ -24,5 +24,6 @@
     "sequelize": "^6.30.0"
   },
   "keywords": [],
+  "devDependencies": {},
   "description": ""
 }
