@@ -1,17 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const { Article } = require("../models");
+const categorieController = require("../controllers/adminController");
+
 
 router.get("/", async (req, res) => {
   const articles = await Article.findAll();
   return res.json(articles);
 });
 
-
 router.get("/", categorieController.index);
 
 router.post("/", categorieController.store);
-
 
 router.post("/", async (req, res) => {
   // console.log(req.body);

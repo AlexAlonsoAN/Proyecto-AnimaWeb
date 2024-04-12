@@ -34,9 +34,11 @@ const userController = {
     return res.send("Usuario modificado con éxito!");
   },
   destroy: async (req, res) => {
-    router.get("/", async (req, res) => {});
+    const { id } = req.params;
+    const user = await User.findByPk(id);
+    user.destroy;
+    console.log("Usuario eliminado con éxito");
   },
-  // TODO: Escribir el método destroy.
 };
 
 module.exports = userController;

@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const { Admin } = require("../models");
 const adminController = require("../controllers/adminController");
 
-router.post("/", async (req, res) => {
-  const { title, content, userId } = req.body;
-  await Article.create({ title, content, userId });
-  return res.send("El articulo fue creado con éxito!");
-});
+router.get("/", adminController.index);
+
+router.get("/:id", adminController.show);
+
+router.post("/", adminController.store);
+
+router.patch("/:id", adminController.update);
+
+router.delete("/:id", adminController.destroy);
 
 module.exports = router;
