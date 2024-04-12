@@ -12,7 +12,6 @@ const userController = {
     const user = await User.findByPk(id);
     return res.json(user);
   },
-  // store: nombre que utilizamos para el método que trae a uno de los usuarios
   store: async (req, res) => {
     const { firstname, lastname, email, password } = req.body;
     await User.create({ firstname, lastname, email, password });

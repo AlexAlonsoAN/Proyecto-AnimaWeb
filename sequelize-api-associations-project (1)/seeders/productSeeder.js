@@ -15,7 +15,7 @@ async function productSeeder() {
   }
   try {
     await Product.bulkCreate(products);
-    console.log("Se corrió el seeder de usuarios");
+    console.log("Se corrió el seeder de productos");
   } catch (err) {
     console.log(err);
   }

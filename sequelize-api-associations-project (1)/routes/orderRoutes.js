@@ -2,6 +2,19 @@ const express = require("express");
 const router = express.Router();
 const { Article } = require("../models");
 
+
+router.get("/", orderController.index);
+
+router.get("/:id", orderController.show);
+
+router.post("/", orderController.store);
+
+router.patch("/:id", update);
+
+router.delete("/:id", userController.destroy);
+
+
+
 router.get("/", async (req, res) => {
   const articles = await Article.findAll();
   return res.json(articles);

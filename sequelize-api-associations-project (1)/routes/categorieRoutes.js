@@ -7,6 +7,12 @@ router.get("/", async (req, res) => {
   return res.json(articles);
 });
 
+
+router.get("/", categorieController.index);
+
+router.post("/", categorieController.store);
+
+
 router.post("/", async (req, res) => {
   // console.log(req.body);
   const { title, content, userId } = req.body;

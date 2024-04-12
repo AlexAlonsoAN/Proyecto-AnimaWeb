@@ -24,6 +24,8 @@ Order.initModel(sequelize);
 Product.initModel(sequelize);
 Categorie.initModel(sequelize);
 
+
+
 module.exports = {
   sequelize,
   User,

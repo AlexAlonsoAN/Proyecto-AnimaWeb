@@ -19,4 +19,19 @@ router.post("/", async (req, res) => {
   return res.send("El articulo fue creado con éxito!");
 });
 
+router.get("/", productController.index);
+
+router.get("/:id", productController.show);
+
+router.post("/", productController.store);
+
+router.patch("/:id", update);
+
+router.delete("/:id", productController.destroy);
+
+router.get("/", async (req, res) => {
+  const product = await Product.findAll();
+  return res.json(product);
+});
+
 module.exports = router;
