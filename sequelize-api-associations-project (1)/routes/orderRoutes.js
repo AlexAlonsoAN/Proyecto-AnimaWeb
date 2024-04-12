@@ -11,7 +11,7 @@ router.post("/", orderController.store);
 
 router.patch("/:id", update);
 
-router.delete("/:id", userController.destroy);
+router.delete("/:id", orderController.destroy);
 
 
 
