@@ -1,7 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { Article } = require("../models");
-
 
 router.get("/", orderController.index);
 
@@ -9,11 +7,9 @@ router.get("/:id", orderController.show);
 
 router.post("/", orderController.store);
 
-router.patch("/:id", update);
+router.patch("/:id", orderController.update);
 
 router.delete("/:id", orderController.destroy);
-
-
 
 router.get("/", async (req, res) => {
   const articles = await Article.findAll();
