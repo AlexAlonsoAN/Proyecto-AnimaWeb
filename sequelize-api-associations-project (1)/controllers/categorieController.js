@@ -12,8 +12,14 @@ const categorieController = {
   },
   store: async (req, res) => {
     const { firstname, lastname, email, password } = req.body;
-    await Categorie.create({ firstname, lastname, email, phonenumber, password });
-    return res.send("El usuario fue creado con éxito!");
+    await Categorie.create({
+      firstname,
+      lastname,
+      email,
+      phonenumber,
+      password,
+    });
+    return res.send("La categoría fue creada con éxito!");
   },
   update: async (req, res) => {
     const { id } = req.params;
@@ -29,7 +35,7 @@ const categorieController = {
 
     await categorie.save();
 
-    return res.send("Usuario modificado con éxito!");
+    return res.send("Categoría modificada con éxito!");
   },
   destroy: async (req, res) => {
     router.get("/", async (req, res) => {});

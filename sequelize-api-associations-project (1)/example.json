@@ -1,6 +1,16 @@
 {
-  "firstname": "Juan",
-  "lastname": "Pérez",
-  "email": "juancitodecv56@anima.edu.uy",
-  "password": "12345678"
+  "products": [
+    {
+      "id": 1,
+      "name": "Lorem",
+      "qty": 3
+    },
+    {
+      "id": 2,
+      "name": "Ipsum",
+      "qty": 2
+    }
+  ],
+  "userId": 1,
+  "address": "Canelones 2253"
 }
