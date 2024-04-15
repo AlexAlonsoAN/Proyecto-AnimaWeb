@@ -11,11 +11,11 @@ class Order extends Model {
         },
         status: {
           type: DataTypes.STRING,
-          allowNull: false,
-          unique: true,
+          allowNull: true,
+       
         },
         productList: {
-          type: DataTypes.STRING,
+          type: DataTypes.JSON,
           allowNull: false,
         },
       },
