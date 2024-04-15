@@ -12,27 +12,33 @@ const order=await Order. findByPk(id);
 return res.json(order);
   },
   store: async (req, res) => {
+
+ try{ 
+
     const order = req.body;
-for (const product of order.productList) {
+ for (const product of order.productList) {
   const productInDb = await Product.findByPk(product.id)
   if(productInDb.stock< product.qty){
 
   }
   product.price = productInDb.price
 }
-order.status = "pending2"
+order.status = "pending"
 
 
 for (const product of order.productList) {
   const productInDb = await Product.findByPk(product.id)
 
   productInDb.stock = productInDb.stock -product.qty
-}
+} 
 
  await Order.create(order)
  res.send("orden guardada")
     
-  },
+ }   
+catch (err){
+ return res.json ({message:"ups!"})
+} },
 
   update: async (req, res) => {
     const { id } = req .params;
