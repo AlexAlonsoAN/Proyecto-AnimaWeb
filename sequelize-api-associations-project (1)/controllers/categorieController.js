@@ -38,7 +38,10 @@ const categorieController = {
     return res.send("Categoría modificada con éxito!");
   },
   destroy: async (req, res) => {
-    router.get("/", async (req, res) => {});
+    const { id } = req.params;
+    const categorie = await Categorie.findByPk(id);
+    categorie.destroy;
+    console.log("Categoría eliminada con éxito");
   },
 };
 

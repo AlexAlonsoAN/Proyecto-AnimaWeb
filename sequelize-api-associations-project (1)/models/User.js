@@ -25,9 +25,9 @@ class User extends Model {
         phonenumber: {
           type: DataTypes.STRING,
         },
-        itemList {
-          
-        },
+        // itemList {
+
+        // },
         password: {
           type: DataTypes.STRING,
         },

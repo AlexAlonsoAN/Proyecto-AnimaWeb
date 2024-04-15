@@ -6,15 +6,16 @@ const productController = {
     return res.json(product);
   },
   show: async (req, res) => {
-      const { id } = req.params;
-      const product = await Product.findByPk(id);
-      return res.json(product);
+    const { id } = req.params;
+    const product = await Product.findByPk(id);
+    return res.json(product);
   },
   store: async (req, res) => {
     const { firstname, lastname, email, password } = req.body;
-  await Product.create({ firstname, lastname, email, phonenumber, password });
-  return res.send("El usuario fue creado con éxito!");},
-  
+    await Product.create({ firstname, lastname, email, phonenumber, password });
+    return res.send("El usuario fue creado con éxito!");
+  },
+
   update: async (req, res) => {
     const { id } = req.params;
     const { firstname, lastname, email, phonenumber, password } = req.body;
@@ -32,7 +33,10 @@ const productController = {
     return res.send("Usuario modificado con éxito!");
   },
   destroy: async (req, res) => {
-    router.get("/", async (req, res) => {});
+    const { id } = req.params;
+    const product = await Product.findByPk(id);
+    product.destroy;
+    console.log("Producto eliminado con éxito");
   },
 };
 
