@@ -9,7 +9,10 @@ async function productSeeder() {
       name,
       price: faker.commerce.price(),
       description: faker.internet.email({ firstName: name }),
+      stock:"5",
       type: faker.commerce.product(),
+      categoryId:1,
+      fectured:false
     };
     products.push(newProduct);
   }

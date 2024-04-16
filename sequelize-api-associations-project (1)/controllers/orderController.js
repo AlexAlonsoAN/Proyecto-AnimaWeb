@@ -30,12 +30,18 @@ const orderController = {
       await Order.create(order);
       res.send("orden guardada");
     } catch (err) {
-      return res.json({ message: "ups!" });
+      console.log(err);
+      return res.json({ message: "Ups! Something went wrong :(" });
     }
   },
 
   update: async (req, res) => {
     const { id } = req.params;
+    const order = await Order.findByPk(id);
+    order.status = "declined";
+    await order.save();
+    console.log(order);
+    res.send("save order!");
   },
 
   destroy: async (req, res) => {

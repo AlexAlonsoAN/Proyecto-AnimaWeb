@@ -1,7 +1,7 @@
 const { faker } = require("@faker-js/faker");
-const { Categorie } = require("../models");
+const { Category } = require("../models");
 
-async function categorieSeeder() {
+async function categorySeeder() {
   const categories = [
     {
       name: "Categoria1",
@@ -14,11 +14,11 @@ async function categorieSeeder() {
     },
   ];
   try {
-    await Categorie.bulkCreate(categories);
+    await Category.bulkCreate(categories);
     console.log("Se corrió el seeder de categorias");
   } catch (err) {
     console.log(err);
   }
 }
 
-module.exports = categorieSeeder;
+module.exports = categorySeeder;

@@ -4,13 +4,13 @@ const userRoutes = require("./userRoutes");
 const adminRoutes = require("./adminRoutes");
 const productRoutes = require("./productRoutes");
 const orderRoutes = require("./orderRoutes");
-const categorieRoutes = require("./categorieRoutes");
+const categoryRoutes = require("./categoryRoutes");
 
 router.use(express.json());
 router.use("/users", userRoutes);
 router.use("/admins", adminRoutes);
 router.use("/products", productRoutes);
 router.use("/orders", orderRoutes);
-router.use("/categories", categorieRoutes);
+router.use("/categories", categoryRoutes);
 
 module.exports = router;

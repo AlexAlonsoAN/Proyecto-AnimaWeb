@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Categorie extends Model {
+class Category extends Model {
   static initModel(sequelize) {
-    Categorie.init(
+    Category.init(
       {
         id: {
-          type: DataTypes.BIGINT, // Notar que si bien esto en BD se guarda como BIGINT (8 bytes), Sequelize lo retorna como String, ya que JavaScript no lo puede representar.
+          type: DataTypes.BIGINT,
           primaryKey: true,
           autoIncrement: true,
         },
@@ -16,11 +16,11 @@ class Categorie extends Model {
       },
       {
         sequelize,
-        modelName: "categorie",
+        modelName: "category",
       }
     );
-    return Categorie;
+    return Category;
   }
 }
 
-module.exports = Categorie;
+module.exports = Category;
