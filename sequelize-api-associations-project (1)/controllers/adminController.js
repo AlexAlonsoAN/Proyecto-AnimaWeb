@@ -11,8 +11,8 @@ const adminController = {
     return res.jason(admin);
   },
   store: async (req, res) => {
-    const { firstname, lastname, email, password } = req.body;
-    await Admin.create({ firstname, lastname, email, password });
+    const { name, surname, email, password } = req.body;
+    await Admin.create({ name, surname, email, password });
     return res.send("El admin fue creado con éxito!");
   },
   update: async (req, res) => {
