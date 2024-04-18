@@ -19,7 +19,7 @@ const authController = {
     } catch (err) {
       console.log("error ");
     }
-  },
+  }
 };
 
 module.exports = authController;

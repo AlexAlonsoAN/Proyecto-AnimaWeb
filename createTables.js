@@ -1,7 +1,7 @@
 require("dotenv").config();
 const {
   sequelize,
-} = require("./sequelize-api-associations-project (1)/models");
+} = require("./models");
 
 async function createTables() {
   await sequelize.sync({ force: true });
