@@ -8,7 +8,7 @@ const adminController = {
   show: async (req, res) => {
     const { id } = req.params;
     const admin = await admin.findByPk(id);
-    return res.jason(admin);
+    return res.json(admin);
   },
   store: async (req, res) => {
     const { name, surname, email, password } = req.body;
