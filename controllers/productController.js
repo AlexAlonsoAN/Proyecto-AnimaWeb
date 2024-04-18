@@ -13,7 +13,7 @@ const productController = {
   store: async (req, res) => {
     const { firstname, lastname, email, password } = req.body;
     await Product.create({ firstname, lastname, email, phonenumber, password });
-    return res.send("El usuario fue creado con éxito!");
+    return res.send("Product was succesfully created!");
   },
 
   update: async (req, res) => {
@@ -30,13 +30,13 @@ const productController = {
 
     await product.save();
 
-    return res.send("Usuario modificado con éxito!");
+    return res.send("Product was succesfully updated!");
   },
   destroy: async (req, res) => {
     const { id } = req.params;
     const product = await Product.findByPk(id);
     product.destroy;
-    console.log("Producto eliminado con éxito");
+    console.log("Product was succesfully deleted!");
   },
 };
 

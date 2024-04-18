@@ -1,0 +1,16 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Lorem",
+      "qty": 3
+    },
+    {
+      "id": 2,
+      "name": "Ipsum",
+      "qty": 2
+    }
+  ],
+  "userId": 1,
+  "address": "Canelones 2253"
+}

@@ -15,7 +15,7 @@ const userController = {
   store: async (req, res) => {
     const { firstname, lastname, email, password } = req.body;
     await User.create({ firstname, lastname, email, phonenumber, password });
-    return res.send("El usuario fue creado con éxito!");
+    return res.send("User was succesfully created!");
   },
   update: async (req, res) => {
     const { id } = req.params;
@@ -31,13 +31,13 @@ const userController = {
 
     await user.save();
 
-    return res.send("Usuario modificado con éxito!");
+    return res.send("User was succesfully updated!");
   },
   destroy: async (req, res) => {
     const { id } = req.params;
     const user = await User.findByPk(id);
     user.destroy;
-    console.log("Usuario eliminado con éxito");
+    console.log("User was succesfully deleted!");
   },
 };
 

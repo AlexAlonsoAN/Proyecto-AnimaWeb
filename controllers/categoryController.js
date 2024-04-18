@@ -19,7 +19,7 @@ const categoryController = {
       phonenumber,
       password,
     });
-    return res.send("La categoría fue creada con éxito!");
+    return res.send("Category was succesfully created!");
   },
   update: async (req, res) => {
     const { id } = req.params;
@@ -35,13 +35,13 @@ const categoryController = {
 
     await Category.save();
 
-    return res.send("Categoría modificada con éxito!");
+    return res.send("Category was succesfully updated!");
   },
   destroy: async (req, res) => {
     const { id } = req.params;
     const category = await Category.findByPk(id);
     category.destroy;
-    console.log("Categoría eliminada con éxito");
+    console.log("Category was successfully deleted!");
   },
 };
 

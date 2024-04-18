@@ -48,7 +48,7 @@ const orderController = {
     const { id } = req.params;
     const order = await Order.findByPk(id);
     order.destroy;
-    console.log("Orden eliminada con éxito");
+    console.log("Order was succesfully deleted!");
   },
 };
 
