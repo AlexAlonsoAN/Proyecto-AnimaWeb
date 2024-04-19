@@ -13,7 +13,7 @@ const authController = {
       });
       if (!user) return res.json({ message: "Credenciales inválidas" });
       else {
-        const token = jwt.sign({ sub: user.id }, process.env.DB_TOKEN_SECRET);
+        const token = jwt.sign({ sub: user.id ,role:"Admin"}, process.env.DB_TOKEN_SECRET);
         return res.send("token:" + token);
       }
     } catch (err) {
