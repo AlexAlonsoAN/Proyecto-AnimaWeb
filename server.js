@@ -7,7 +7,6 @@ const port = process.env.APP_PORT;
 app.use(express.json());
 app.use(routes);
 
-
 app.listen(port, () =>
   console.log(`Servidor corriendo en http://${process.env.APP_DOMAIN}.\n`)
 );

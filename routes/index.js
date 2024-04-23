@@ -9,16 +9,29 @@ const orderRoutes = require("./orderRoutes");
 const categoryRoutes = require("./categoryRoutes");
 const authRoutes = require("./authRoutes");
 
-const IsAdmin = require("../middlewares/IsAdmin")
+const IsAdmin = require("../middlewares/isAdmin");
+const isUser = require("../middlewares/isUser");
 
 router.use(express.json());
-router.use("/users", userRoutes);
 router.use("/tokens", authRoutes);
 
-router.use("/admins", checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),IsAdmin, adminRoutes);
-router.use("/products", productRoutes);
-router.use("/orders", orderRoutes);
-router.use("/categories", categoryRoutes);
+router.use("/users", userRoutes);
 
+router.use(
+  "/admins",
+  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
+  IsAdmin,
+  adminRoutes
+);
+
+router.use("/products", productRoutes);
+
+router.use(
+  "/orders",
+  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
+  isUser,
+  orderRoutes
+);
+router.use("/categories", categoryRoutes);
 
 module.exports = router;
