@@ -6,10 +6,25 @@ router.get("/", productController.index);
 
 router.get("/:id", productController.show);
 
-router.post("/", productController.store);
+router.post(
+  "/",
+  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
+  IsAdmin,
+  productController.store
+);
 
-router.patch("/:id", productController.update);
+router.patch(
+  "/:id",
+  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
+  IsAdmin,
+  productController.update
+);
 
-router.delete("/:id", productController.destroy);
+router.delete(
+  "/:id",
+  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
+  IsAdmin,
+  productController.destroy
+);
 
 module.exports = router;

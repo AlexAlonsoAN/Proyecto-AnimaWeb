@@ -18,20 +18,23 @@ router.use("/tokens", authRoutes);
 router.use("/users", userRoutes);
 
 router.use(
-  "/admins",
+  "/admins", // hecho
   checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
   IsAdmin,
   adminRoutes
 );
 
 router.use("/products", productRoutes);
+// hecho
 
 router.use(
+  // hecho
   "/orders",
   checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
   isUser,
   orderRoutes
 );
+
 router.use("/categories", categoryRoutes);
 
 module.exports = router;
