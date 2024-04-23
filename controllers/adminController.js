@@ -1,4 +1,5 @@
 const { Admin } = require("../models");
+const bcrypt = require("bcryptjs");
 
 const adminController = {
   index: async (req, res) => {

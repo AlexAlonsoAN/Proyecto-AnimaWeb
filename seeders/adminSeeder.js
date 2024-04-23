@@ -10,7 +10,7 @@ async function adminSeeder() {
     password: "123",
   };
   permanentAdmin.push;
-  const admins = [permanentAdmin];
+  const admins = [];
   for (let i = 0; i < 20; i++) {
     const name = faker.person.firstName();
     const newAdmin = {
