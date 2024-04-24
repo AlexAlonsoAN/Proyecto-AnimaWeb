@@ -18,7 +18,7 @@ async function adminSeeder() {
       surname: faker.person.lastName(),
       email: faker.internet.email({ firstName: name }),
       password: "123",
-    };
+    }; 
     admins.push(newAdmin);
   }
   try {

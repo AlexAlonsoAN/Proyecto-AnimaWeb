@@ -1,12 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
+const { expressjwt: checkJwt } = require("express-jwt");
+const isUser = require("../middlewares/isUser");
+
+router.post("/", userController.store);
+
+router.use(
+  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
+  isUser
+);
 
 router.get("/", userController.index);
 
 router.get("/:id", userController.show);
-
-router.post("/", userController.store);
 
 router.patch("/:id", userController.update);
 

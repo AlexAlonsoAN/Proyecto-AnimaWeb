@@ -11,27 +11,19 @@ const categoryController = {
     return res.json(category);
   },
   store: async (req, res) => {
-    const { firstname, lastname, email, password } = req.body;
+    const { name } = req.body;
     await Category.create({
-      firstname,
-      lastname,
-      email,
-      phonenumber,
-      password,
+      name,
     });
     return res.send("Category was succesfully created!");
   },
   update: async (req, res) => {
     const { id } = req.params;
-    const { firstname, lastname, email, phonenumber, password } = req.body;
+    const { name } = req.body;
 
     const Category = await Category.findByPk(id);
 
-    if (firstname) Category.firstname = firstname;
-    if (lastname) Category.lastname = lastname;
-    if (email) Category.email = email;
-    if (password) Category.password = password;
-    if (phonenumber) Category.phonenumber = phonenumber;
+    if (name) Category.name = name;
 
     await Category.save();
 

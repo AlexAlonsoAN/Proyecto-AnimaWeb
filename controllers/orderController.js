@@ -2,7 +2,7 @@ const { Product, Order } = require("../models");
 
 const orderController = {
   index: async (req, res) => {
-    const order = await Order.findAll();
+    const order = await Order.findAll({ include: "user" });
     return res.json(order);
   },
   show: async (req, res) => {
