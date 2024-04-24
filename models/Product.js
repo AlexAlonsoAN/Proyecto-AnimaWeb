@@ -19,12 +19,12 @@ class Product extends Model {
         pics: {
           type: DataTypes.STRING,
         },
-        stock: {
-          type: DataTypes.STRING,
-        },
         price: {
           type: DataTypes.STRING,
           allowNull: false,
+        },
+        stock: {
+          type: DataTypes.STRING,
         },
         featured: {
           type: DataTypes.STRING,
