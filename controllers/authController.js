@@ -12,6 +12,7 @@ const authController = {
         },
       });
       if (!user) return res.json({ message: "Credenciales inválidas" });
+      
       else {
         const token = jwt.sign(
           { sub: user.id, role: "Admin" },
