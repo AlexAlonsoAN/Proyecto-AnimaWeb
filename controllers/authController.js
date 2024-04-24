@@ -1,11 +1,11 @@
 const jwt = require("jsonwebtoken");
-const { User } = require("../models");
+const {  Admin } = require("../models");
 
 const authController = {
   getToken: async (req, res) => {
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({
+      const user = await Admin.findOne({
         where: {
           email, //only email  === email : email
           password,

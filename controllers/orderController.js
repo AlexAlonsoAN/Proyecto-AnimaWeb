@@ -20,13 +20,14 @@ const orderController = {
         product.price = productInDb.price;
       }
       order.status = "pending";
+      
 
       for (const product of order.productList) {
         const productInDb = await Product.findByPk(product.id);
 
         productInDb.stock = productInDb.stock - product.qty;
       }
-
+order.userId = 1
       await Order.create(order);
       res.send("orden guardada");
     } catch (err) {

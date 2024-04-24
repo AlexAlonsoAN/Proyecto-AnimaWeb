@@ -28,6 +28,11 @@ class User extends Model {
         password: {
           type: DataTypes.STRING,
         },
+        itemList:{
+          
+            type: DataTypes.STRING,
+          
+        }
       },
       {
         sequelize,

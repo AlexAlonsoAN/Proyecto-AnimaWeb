@@ -1,3 +1,4 @@
+const isUser = require("../middlewares/isUser");
 const { User } = require("../models");
 const bcrypt = require("bcryptjs")
 
@@ -41,6 +42,7 @@ const userController = {
   },
   destroy: async (req, res) => {
     const { id } = req.params;
+
     const user = await User.findByPk(id);
     user.destroy;
     console.log("User was succesfully deleted!");
