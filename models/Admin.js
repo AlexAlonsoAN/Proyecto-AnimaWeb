@@ -9,11 +9,11 @@ class Admin extends Model {
           primaryKey: true,
           autoIncrement: true,
         },
-        surname: {
+        name: {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        name: {
+        surname: {
           type: DataTypes.STRING,
           allowNull: false,
         },

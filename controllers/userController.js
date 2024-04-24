@@ -1,8 +1,6 @@
 const isUser = require("../middlewares/isUser");
 const { User } = require("../models");
-const bcrypt = require("bcryptjs")
-
-
+const bcrypt = require("bcryptjs");
 
 const userController = {
   // index: nombre que utilizamos para el método que trae todos los usuarios
@@ -17,10 +15,16 @@ const userController = {
     return res.json(user);
   },
   store: async (req, res) => {
-    const { firstname, lastname, email,phonenumber, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password,10);
+    const { firstname, lastname, email, phonenumber, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
     console.log(hashedPassword);
-    await User.create({ firstname, lastname, email, phonenumber, hashedPassword });
+    await User.create({
+      firstname,
+      lastname,
+      email,
+      phonenumber,
+      hashedPassword,
+    });
 
     return res.send("User was succesfully created!");
   },

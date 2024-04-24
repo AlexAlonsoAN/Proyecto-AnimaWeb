@@ -11,22 +11,23 @@ const productController = {
     return res.json(product);
   },
   store: async (req, res) => {
-    const { firstname, lastname, email, password } = req.body;
-    await Product.create({ firstname, lastname, email, phonenumber, password });
+    const { name, description, price, pics, stock, featured } = req.body;
+    await Product.create({ name, description, price, pics, stock, featured});
     return res.send("Product was succesfully created!");
   },
 
   update: async (req, res) => {
     const { id } = req.params;
-    const { firstname, lastname, email, phonenumber, password } = req.body;
+    const { name, description, price, pics, stock, featured} = req.body;
 
     const user = await Product.findByPk(id);
 
-    if (firstname) Product.firstname = firstname;
-    if (lastname) Product.lastname = lastname;
-    if (email) Product.email = email;
-    if (password) Product.password = password;
-    if (phonenumber) Product.phonenumber = phonenumber;
+    if (name) Product.name = name;
+    if (description) Product.description = description;
+    if (price) Product.price = price;
+    if (pics) Product.pics = pics;
+    if (stock) Product.stock = stock;
+    if (featured) Product.featured = featured;
 
     await product.save();
 

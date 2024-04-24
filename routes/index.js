@@ -8,12 +8,17 @@ const productRoutes = require("./productRoutes");
 const orderRoutes = require("./orderRoutes");
 const categoryRoutes = require("./categoryRoutes");
 const authRoutes = require("./authRoutes");
-
 const IsAdmin = require("../middlewares/isAdmin");
 const isUser = require("../middlewares/isUser");
 
 router.use(express.json());
-router.use("/tokens", authRoutes);
+
+router.use(
+  "/tokens",
+  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
+  IsAdmin,
+  authRoutes
+); // hecho
 
 router.use("/users", userRoutes);
 
@@ -28,7 +33,7 @@ router.use("/products", productRoutes);
 // hecho
 
 router.use(
-  // hecho
+  // hecho 
   "/orders",
   checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
   isUser,
