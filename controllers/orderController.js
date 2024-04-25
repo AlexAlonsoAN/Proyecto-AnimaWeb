@@ -20,21 +20,21 @@ const orderController = {
         product.price = productInDb.price;
       }
       order.status = "pending";
-      
 
       for (const product of order.productList) {
         const productInDb = await Product.findByPk(product.id);
 
         productInDb.stock = productInDb.stock - product.qty;
       }
-order.userId = 1
+      order.userId = 1;
       await Order.create(order);
       res.send("orden guardada");
     } catch (err) {
       console.log(err);
-      return res.json({ message: "Ups! Something went wrong :(" });
+      return res.json({ message: "error Order drop the table" });
     }
   },
+  
 
   update: async (req, res) => {
     const { id } = req.params;

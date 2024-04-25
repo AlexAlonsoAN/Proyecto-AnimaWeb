@@ -15,8 +15,6 @@ router.use(express.json());
 
 router.use(
   "/tokens",
-  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
-  IsAdmin,
   authRoutes
 ); // hecho
 
@@ -36,7 +34,7 @@ router.use(
   // hecho 
   "/orders",
   checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
-  isUser,
+  
   orderRoutes
 );
 

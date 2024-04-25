@@ -3,7 +3,7 @@ function isAdmin(req, res, next) {
   if (req.auth.role === "Admin") {
     next(); // Para dar paso al siguiente middleware.
   } else {
-    console.log("Credenciales invalidas ");
+    console.log("Credenciales invalidas  ");
   }
 }
 

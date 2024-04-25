@@ -7,8 +7,7 @@ const isUser = require("../middlewares/isUser");
 router.post("/", userController.store);
 
 router.use(
-  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
-  isUser
+  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] })
 );
 
 router.get("/", userController.index);

@@ -47,9 +47,19 @@ const userController = {
   destroy: async (req, res) => {
     const { id } = req.params;
 
-    const user = await User.findByPk(id);
-    user.destroy;
-    console.log("User was succesfully deleted!");
+    const role = req.auth.role;
+    const subId = req.auth.sub;
+    if (role === "User" && id == subId) {
+      const user = await User.findByPk(subId);
+      user.destroy;
+      res.send(`User ${user.name}  was succesfully deleted!`);
+    } else if (role === "Admin") {
+      const user = await User.findByPk(id);
+      user.destroy;
+      res.send(`User ${user.name}  was succesfully deleted!`);
+    } else {
+      return res.send("No hay resultados");
+    }
   },
 };
 
