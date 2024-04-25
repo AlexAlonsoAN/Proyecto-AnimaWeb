@@ -10,4 +10,4 @@ adminSeeder();
 categorySeeder();
 productSeeder();
 orderSeeder();
-console.log("Se corrieron los seeders!");
+console.log("All seeders are running!");

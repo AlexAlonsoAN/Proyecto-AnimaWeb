@@ -8,5 +8,5 @@ app.use(express.json());
 app.use(routes);
 
 app.listen(port, () =>
-  console.log(`Servidor corriendo en http://${process.env.APP_DOMAIN}.\n`)
+  console.log(`Server running in http://${process.env.APP_DOMAIN}.\n`)
 );

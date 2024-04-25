@@ -4,7 +4,6 @@ const productController = require("../controllers/productController");
 const { expressjwt: checkJwt } = require("express-jwt");
 const IsAdmin = require("../middlewares/isAdmin");
 
-
 router.get("/", productController.index);
 
 router.get("/:id", productController.show);
@@ -15,7 +14,6 @@ router.post(
   IsAdmin,
   productController.store
 );
-
 
 router.patch(
   "/:id",

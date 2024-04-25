@@ -14,7 +14,7 @@ const adminController = {
   store: async (req, res) => {
     const { name, surname, email, password } = req.body;
     await Admin.create({ name, surname, email, password });
-    return res.send("El admin fue creado con éxito!");
+    return res.send("Admin was succesfully created!");
   },
   update: async (req, res) => {
     const { id } = req.params;
@@ -28,13 +28,13 @@ const adminController = {
     if (password) admin.password = password;
 
     await admin.save();
-    return res.send("Admin modificado con éxito!");
+    return res.send("Admin was succesfully updated!");
   },
   destroy: async (req, res) => {
     const { id } = req.params;
     const admin = await Admin.findByPk(id);
     admin.destroy;
-    console.log("Admin eliminado con éxito!");
+    console.log("Admin was succesfully deleted!");
   },
 };
 

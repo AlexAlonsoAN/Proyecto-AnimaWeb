@@ -11,7 +11,7 @@ class Order extends Model {
         },
         status: {
           type: DataTypes.ENUM,
-          values:["pending", "declined", "payment", "shipped" , "delivered"],
+          values: ["pending", "declined", "payment", "shipped", "delivered"],
           allowNull: true,
         },
         productList: {

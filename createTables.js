@@ -1,11 +1,9 @@
 require("dotenv").config();
-const {
-  sequelize,
-} = require("./models");
+const { sequelize } = require("./models");
 
 async function createTables() {
   await sequelize.sync({ force: true });
-  console.log("¡Las tablas fueron creadas!");
+  console.log("Tables have been created succesfully!");
 }
 
 createTables();

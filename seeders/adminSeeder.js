@@ -25,7 +25,7 @@ async function adminSeeder() {
   }
   try {
     await Admin.bulkCreate(admins);
-    console.log("Se corrió el seeder de admins");
+    console.log("Admin seeder is running!");
   } catch (err) {
     console.log(err);
   }

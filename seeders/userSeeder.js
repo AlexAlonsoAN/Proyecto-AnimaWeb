@@ -19,7 +19,7 @@ async function userSeeder() {
   }
   try {
     await User.bulkCreate(users);
-    console.log("Se corrió el seeder de usuarios");
+    console.log("User seeder is running!");
   } catch (err) {
     console.log(err);
   }

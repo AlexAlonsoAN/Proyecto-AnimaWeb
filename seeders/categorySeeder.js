@@ -15,7 +15,7 @@ async function categorySeeder() {
   ];
   try {
     await Category.bulkCreate(categories);
-    console.log("Se corrió el seeder de categorias");
+    console.log("Category seeder is running!");
   } catch (err) {
     console.log(err);
   }

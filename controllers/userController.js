@@ -58,7 +58,7 @@ const userController = {
       user.destroy;
       res.send(`User ${user.name}  was succesfully deleted!`);
     } else {
-      return res.send("No hay resultados");
+      return res.send("No results");
     }
   },
 };

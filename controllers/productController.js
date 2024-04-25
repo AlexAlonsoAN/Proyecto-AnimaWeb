@@ -12,13 +12,13 @@ const productController = {
   },
   store: async (req, res) => {
     const { name, description, price, pics, stock, featured } = req.body;
-    await Product.create({ name, description, price, pics, stock, featured});
+    await Product.create({ name, description, price, pics, stock, featured });
     return res.send("Product was succesfully created!");
   },
 
   update: async (req, res) => {
     const { id } = req.params;
-    const { name, description, price, pics, stock, featured} = req.body;
+    const { name, description, price, pics, stock, featured } = req.body;
 
     const user = await Product.findByPk(id);
 

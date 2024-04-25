@@ -13,10 +13,7 @@ const isUser = require("../middlewares/isUser");
 
 router.use(express.json());
 
-router.use(
-  "/tokens",
-  authRoutes
-); // hecho
+router.use("/tokens", authRoutes); // hecho
 
 router.use("/users", userRoutes);
 
@@ -31,10 +28,10 @@ router.use("/products", productRoutes);
 // hecho
 
 router.use(
-  // hecho 
+  // hecho
   "/orders",
   checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
-  
+
   orderRoutes
 );
 

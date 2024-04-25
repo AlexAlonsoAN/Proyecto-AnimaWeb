@@ -6,7 +6,7 @@ const authController = {
   getToken: async (req, res) => {
     try {
       const { email, password } = req.body;
-  
+
       const admin = await Admin.findOne({ where: { email } });
       const user = await User.findOne({ where: { email } });
 
@@ -32,13 +32,12 @@ const authController = {
         }
       }
 
-      return res.json({ message: "Credenciales inválidas" });
-
+      return res.json({ message: "Invalid Credentials" });
     } catch (error) {
       console.log(error);
-      return res.status(500).json({ message: "Error en el servidor" });
+      return res.status(500).json({ message: "Internal Server Error" });
     }
-  }
+  },
 };
 
 module.exports = authController;
