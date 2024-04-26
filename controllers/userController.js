@@ -30,12 +30,12 @@ const userController = {
   },
   update: async (req, res) => {
     const { id } = req.params;
-    const { firstname, lastname, email, phonenumber, password } = req.body;
+    const { name, surname, email, phonenumber, password } = req.body;
 
     const user = await User.findByPk(id);
 
-    if (firstname) user.firstname = firstname;
-    if (lastname) user.lastname = lastname;
+    if (name) user.name = name;
+    if (surname) user.surname = surname;
     if (email) user.email = email;
     if (password) user.password = password;
     if (phonenumber) user.phonenumber = phonenumber;
@@ -50,17 +50,26 @@ const userController = {
     const role = req.auth.role;
     const subId = req.auth.sub;
     if (role === "User" && id == subId) {
-      const user = await User.findByPk(subId);
-      user.destroy;
-      res.send(`User ${user.name}  was succesfully deleted!`);
+      await User.destroy({
+        where: {
+        id: subId,
+        },
+       });
+      res.send(`User   was succesfully deleted!`);
     } else if (role === "Admin") {
       const user = await User.findByPk(id);
-      user.destroy;
-      res.send(`User ${user.name}  was succesfully deleted!`);
+      await User.destroy({
+        where: {
+        email: user.email,
+        },
+       });
+       
+      res.send(`User   was succesfully deleted!`);
     } else {
       return res.send("No results");
     }
   },
+
 };
 
 module.exports = userController;

@@ -5,13 +5,7 @@ async function categorySeeder() {
   const categories = [
     {
       name: "Categoria1",
-    },
-    {
-      name: "Categoria2",
-    },
-    {
-      name: "Categoria3",
-    },
+    }
   ];
   try {
     await Category.bulkCreate(categories);
