@@ -20,14 +20,14 @@ const productController = {
     const { id } = req.params;
     const { name, description, price, pics, stock, featured } = req.body;
 
-    const user = await Product.findByPk(id);
+    const product = await Product.findByPk(id);
 
-    if (name) Product.name = name;
-    if (description) Product.description = description;
-    if (price) Product.price = price;
-    if (pics) Product.pics = pics;
-    if (stock) Product.stock = stock;
-    if (featured) Product.featured = featured;
+    if (name) product.name = name;
+    if (description) product.description = description;
+    if (price) product.price = price;
+    if (pics) product.pics = pics;
+    if (stock) product.stock = stock;
+    if (featured) product.featured = featured;
 
     await product.save();
 
@@ -36,8 +36,12 @@ const productController = {
   destroy: async (req, res) => {
     const { id } = req.params;
     const product = await Product.findByPk(id);
-    product.destroy;
-    console.log("Product was succesfully deleted!");
+    await Product.destroy({
+      where: {
+      id: product.id,
+      },
+     });
+    return res.send("Product was succesfully deleted!");
   },
 };
 

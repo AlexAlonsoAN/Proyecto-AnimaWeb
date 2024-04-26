@@ -32,8 +32,13 @@ const categoryController = {
   destroy: async (req, res) => {
     const { id } = req.params;
     const category = await Category.findByPk(id);
-    category.destroy;
-    console.log("Category was successfully deleted!");
+    await Category.destroy({
+      where: {
+      id: category.id,
+      },
+     });
+     
+    return res.send("Category was successfully deleted!");
   },
 };
 

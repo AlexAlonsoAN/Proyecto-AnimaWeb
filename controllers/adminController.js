@@ -33,8 +33,12 @@ const adminController = {
   destroy: async (req, res) => {
     const { id } = req.params;
     const admin = await Admin.findByPk(id);
-    admin.destroy;
-    console.log("Admin was succesfully deleted!");
+    await Admin.destroy({
+      where: {
+      id: admin.id,
+      },
+     });
+    return res.send("Admin was succesfully deleted!");
   },
 };
 

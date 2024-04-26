@@ -28,12 +28,13 @@ const orderController = {
       }
       order.userId = 1;
       await Order.create(order);
-      res.send("Your order has been saved!");
+      res.send("orden guardada");
     } catch (err) {
       console.log(err);
-      return res.status(500).json({ message: "Internal Server Error" });
+      return res.json({ message: "error Order drop the table" });
     }
   },
+  
 
   update: async (req, res) => {
     const { id } = req.params;
@@ -41,14 +42,18 @@ const orderController = {
     order.status = "declined";
     await order.save();
     console.log(order);
-    res.send("Your order has been saved!");
+    res.send("save order!");
   },
 
   destroy: async (req, res) => {
     const { id } = req.params;
     const order = await Order.findByPk(id);
-    order.destroy;
-    console.log("Your order was succesfully deleted!");
+    await Order.destroy({
+      where: {
+      id: order.id,
+      },
+     });
+ return res.send("Order was succesfully deleted!");
   },
 };
 
