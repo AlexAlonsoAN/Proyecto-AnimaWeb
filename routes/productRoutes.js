@@ -6,6 +6,9 @@ const IsAdmin = require("../middlewares/isAdmin");
 
 router.get("/", productController.index);
 
+
+
+
 router.get("/:id", productController.show);
 
 router.post(

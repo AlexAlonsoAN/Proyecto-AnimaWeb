@@ -2,6 +2,7 @@ const { Product } = require("../models");
 
 const productController = {
   index: async (req, res) => {
+  
     const product = await Product.findAll();
     return res.json(product);
   },
