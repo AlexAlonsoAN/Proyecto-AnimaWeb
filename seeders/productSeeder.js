@@ -13,6 +13,7 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: false,
+        pics: "Attack On Titan V.1.jpg",
       },
       {
         name: "Naruto Vol. 1",
@@ -23,6 +24,7 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: false,
+        pics: "NAruto.jpg",
       },
       {
         name: "One Piece Vol. 1",
@@ -33,6 +35,7 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: true,
+        pics: "One pice.jpg",
       },
       {
         name: "Demon Slayer: Kimetsu no Yaiba Vol. 1",
@@ -43,6 +46,7 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: false,
+        pics: "Demon Slayer V.1.jpg",
       },
       {
         name: "My Hero Academia Vol. 1",
@@ -53,6 +57,7 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: true,
+        pics: "Marvel Super Hero V.1.jpg",
       },
       {
         name: "Tokyo Ghoul Vol. 1",
@@ -63,6 +68,7 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: false,
+        pics: "One pice.jpg",
       },
       {
         name: "Death Note Vol. 1",
@@ -73,6 +79,7 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: true,
+        pics: "Deatch Note.jpg",
       },
       {
         name: "Fullmetal Alchemist Vol. 1",
@@ -83,6 +90,7 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: false,
+        pics: "Poster-Fullmetal V.1.jpg",
       },
       {
         name: "Bleach Vol. 1",
@@ -93,6 +101,7 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: true,
+        pics: "One pice.jpg",
       },
       {
         name: "Black Clover Vol. 1",
@@ -103,11 +112,12 @@ async function productSeeder() {
         type: "Manga",
         categoryId: 1,
         featured: false,
+        pics: "Tokyo Ghoul Vol. 1.jpg",
       },
     ];
     const comics = [
       {
-        name: "Spider-Man: Homecoming",
+        name: "Dead Pool V.1",
         price: "14.99",
         description:
           "El regreso del icónico héroe Spider-Man mientras equilibra su vida escolar con sus aventuras como superhéroe.",
@@ -115,9 +125,10 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: true,
+        pics: "Dead Pool V.1.jpg",
       },
       {
-        name: "Batman: The Dark Knight Returns",
+        name: "Flash V.1",
         price: "19.99",
         description:
           "Bruce Wayne vuelve a la acción como Batman para proteger Gotham City después de años de retiro.",
@@ -125,6 +136,7 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: false,
+        pics: "Flash V.1.jpg",
       },
       {
         name: "X-Men: Days of Future Past",
@@ -135,6 +147,7 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: true,
+        pics: "X-Men Days of Future Past.jpg",
       },
       {
         name: "The Avengers: Age of Ultron",
@@ -145,6 +158,7 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: false,
+        pics: "The Avengers Age of Ultron.jpeg",
       },
       {
         name: "Wonder Woman: Year One",
@@ -155,6 +169,7 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: true,
+        pics: "Wonder Woman Year One V.2.webp",
       },
       {
         name: "The Flash: Rebirth",
@@ -165,6 +180,7 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: false,
+        pics: "The Flash  Rebirth.jpg",
       },
       {
         name: "Green Lantern: Secret Origin",
@@ -175,6 +191,7 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: true,
+        pics: "Green Lantern Secret Origin.jpg",
       },
       {
         name: "Iron Man: Extremis",
@@ -185,6 +202,7 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: false,
+        pics: "Iron Man Extremis.jpg",
       },
       {
         name: "Captain America: The Winter Soldier",
@@ -195,6 +213,7 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: true,
+        pics: "Captain America The Winter Soldier.jpg",
       },
       {
         name: "Guardians of the Galaxy: Cosmic Avengers",
@@ -205,6 +224,7 @@ async function productSeeder() {
         type: "Cómic",
         categoryId: 2,
         featured: false,
+        pics: "Guardians of the Galaxy Cosmic Avengers.jpg",
       },
     ];
     const cards = [
@@ -217,6 +237,7 @@ async function productSeeder() {
         type: "Carta Coleccionable",
         categoryId: 3,
         featured: true,
+        pics: "Magic  The Gathering - Black Lotus.jpg",
       },
       {
         name: "Pokémon - Charizard Holo 1st Edition",
@@ -227,6 +248,7 @@ async function productSeeder() {
         type: "Carta Coleccionable",
         categoryId: 3,
         featured: false,
+        pics: "Pokémon - Charizard Holo 1st Edition.webp",
       },
       {
         name: "Yu-Gi-Oh! - Blue-Eyes White Dragon",
@@ -237,6 +259,7 @@ async function productSeeder() {
         type: "Carta Coleccionable",
         categoryId: 3,
         featured: true,
+        pics: "Yu-Gi-Oh! - Blue-Eyes White Dragon.jpg",
       },
       {
         name: "Magic: The Gathering - Mox Sapphire",
@@ -247,68 +270,76 @@ async function productSeeder() {
         type: "Carta Coleccionable",
         categoryId: 3,
         featured: false,
+        pics: "Magic The Gathering - Mox Sapphire.jpg",
       },
       {
-        name: "Pokémon - Charizard Holo 1st Edition",
-        price: "1200.00",
+        name: "Pokémon - Pikachu Illustrator",
+        price: "300000.00",
         description:
-          "La carta de Charizard de primera edición, muy codiciada por coleccionistas de Pokémon.",
-        stock: "10",
-        type: "Carta Coleccionable",
-        categoryId: 3,
-        featured: false,
-      },
-      {
-        name: "Yu-Gi-Oh! - Blue-Eyes White Dragon",
-        price: "500.00",
-        description:
-          "Carta poderosa de Yu-Gi-Oh! con un diseño icónico y valor significativo para los duelistas.",
-        stock: "15",
+          "Una de las cartas más raras y valiosas de Pokémon, entregada solo a los ganadores de concursos de ilustración en Japón.",
+        stock: "1",
         type: "Carta Coleccionable",
         categoryId: 3,
         featured: true,
+        pics: "Pokémon - Pikachu Illustrator.jpg",
       },
       {
-        name: "Magic: The Gathering - Mox Sapphire",
-        price: "6000.00",
+        name: "Yu-Gi-Oh! - Dark Magician",
+        price: "400.00",
         description:
-          "Una de las cinco Moxen, altamente valorada por su capacidad para generar maná sin costo.",
-        stock: "2",
+          "Una de las cartas más emblemáticas de Yu-Gi-Oh!, utilizada por el protagonista Yugi Muto en la serie.",
+        stock: "20",
         type: "Carta Coleccionable",
         categoryId: 3,
         featured: false,
+        pics: "Yu-Gi-Oh! - Dark Magician.webp",
       },
       {
-        name: "Pokémon - Charizard Holo 1st Edition",
-        price: "1200.00",
+        name: "Magic: The Gathering - Ancestral Recall",
+        price: "5000.00",
         description:
-          "La carta de Charizard de primera edición, muy codiciada por coleccionistas de Pokémon.",
-        stock: "10",
-        type: "Carta Coleccionable",
-        categoryId: 3,
-        featured: false,
-      },
-      {
-        name: "Yu-Gi-Oh! - Blue-Eyes White Dragon",
-        price: "500.00",
-        description:
-          "Carta poderosa de Yu-Gi-Oh! con un diseño icónico y valor significativo para los duelistas.",
-        stock: "15",
+          "Una de las cartas más poderosas de Magic: The Gathering, permitiendo al jugador robar tres cartas por solo un maná azul.",
+        stock: "3",
         type: "Carta Coleccionable",
         categoryId: 3,
         featured: true,
+        pics: "Magic The Gathering - Ancestral Recall.webp",
       },
       {
-        name: "Magic: The Gathering - Mox Sapphire",
-        price: "6000.00",
+        name: "Pokémon - Blastoise Holo 1st Edition",
+        price: "800.00",
         description:
-          "Una de las cinco Moxen, altamente valorada por su capacidad para generar maná sin costo.",
+          "La carta de Blastoise de primera edición, una de las cartas más queridas por los coleccionistas de Pokémon.",
+        stock: "5",
+        type: "Carta Coleccionable",
+        categoryId: 3,
+        featured: false,
+        pics: "Pokémon - Blastoise Holo 1st Edition.webp",
+      },
+      {
+        name: "Yu-Gi-Oh! - Red-Eyes Black Dragon",
+        price: "450.00",
+        description:
+          "Una de las cartas más populares de Yu-Gi-Oh!, utilizada por Joey Wheeler en la serie.",
+        stock: "25",
+        type: "Carta Coleccionable",
+        categoryId: 3,
+        featured: true,
+        pics: "Yu-Gi-Oh! - Red-Eyes Black Dragon.webp",
+      },
+      {
+        name: "Magic: The Gathering - Time Walk",
+        price: "7000.00",
+        description:
+          "Una carta muy poderosa de Magic: The Gathering que permite al jugador tomar un turno adicional por solo dos manás.",
         stock: "2",
         type: "Carta Coleccionable",
         categoryId: 3,
         featured: false,
+        pics: "Magic The Gathering - Time Walk.jpg",
       },
     ];
+    
 
     products = [...mangas, ...comics, ...cards];
   }
