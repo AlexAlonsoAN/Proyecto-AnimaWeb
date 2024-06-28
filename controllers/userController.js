@@ -15,15 +15,15 @@ const userController = {
     return res.json(user);
   },
   store: async (req, res) => {
-    const { firstname, lastname, email, phonenumber, password } = req.body;
+    const { name, surname, email, phonenumber, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     console.log(hashedPassword);
     await User.create({
-      firstname,
-      lastname,
+      name,
+      surname,
       email,
       phonenumber,
-      hashedPassword,
+      password: hashedPassword,
     });
 
     return res.send("User was succesfully created!");
@@ -52,24 +52,23 @@ const userController = {
     if (role === "User" && id == subId) {
       await User.destroy({
         where: {
-        id: subId,
+          id: subId,
         },
-       });
+      });
       res.send(`User   was succesfully deleted!`);
     } else if (role === "Admin") {
       const user = await User.findByPk(id);
       await User.destroy({
         where: {
-        email: user.email,
+          email: user.email,
         },
-       });
-       
+      });
+
       res.send(`User   was succesfully deleted!`);
     } else {
       return res.send("No results");
     }
   },
-
 };
 
 module.exports = userController;
