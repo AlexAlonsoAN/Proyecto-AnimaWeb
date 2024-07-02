@@ -89,7 +89,7 @@ async function productSeeder() {
         stock: "70",
         type: "Manga",
         categoryId: 1,
-        featured: false,
+        featured: true,
         pics: "Poster-Fullmetal V.1.jpg",
       },
       {
@@ -100,7 +100,7 @@ async function productSeeder() {
         stock: "85",
         type: "Manga",
         categoryId: 1,
-        featured: true,
+        featured: false,
         pics: "One pice.jpg",
       },
       {
@@ -146,7 +146,7 @@ async function productSeeder() {
         stock: "30",
         type: "Cómic",
         categoryId: 2,
-        featured: true,
+        featured: false,
         pics: "X-Men Days of Future Past.jpg",
       },
       {
@@ -324,7 +324,7 @@ async function productSeeder() {
         stock: "25",
         type: "Carta Coleccionable",
         categoryId: 3,
-        featured: true,
+        featured: false,
         pics: "Yu-Gi-Oh! - Red-Eyes Black Dragon.webp",
       },
       {
@@ -339,7 +339,6 @@ async function productSeeder() {
         pics: "Magic The Gathering - Time Walk.jpg",
       },
     ];
-    
 
     products = [...mangas, ...comics, ...cards];
   }
