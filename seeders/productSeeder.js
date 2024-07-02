@@ -23,7 +23,7 @@ async function productSeeder() {
         stock: "100",
         type: "Manga",
         categoryId: 1,
-        featured: false,
+        featured: true,
         pics: "NAruto.jpg",
       },
       {
@@ -34,7 +34,7 @@ async function productSeeder() {
         stock: "75",
         type: "Manga",
         categoryId: 1,
-        featured: true,
+        featured: false,
         pics: "One pice.jpg",
       },
       {
@@ -56,7 +56,7 @@ async function productSeeder() {
         stock: "120",
         type: "Manga",
         categoryId: 1,
-        featured: true,
+        featured: false,
         pics: "Marvel Super Hero V.1.jpg",
       },
       {
@@ -67,7 +67,7 @@ async function productSeeder() {
         stock: "80",
         type: "Manga",
         categoryId: 1,
-        featured: false,
+        featured: true,
         pics: "One pice.jpg",
       },
       {
@@ -78,7 +78,7 @@ async function productSeeder() {
         stock: "90",
         type: "Manga",
         categoryId: 1,
-        featured: true,
+        featured: false,
         pics: "Deatch Note.jpg",
       },
       {
@@ -100,7 +100,7 @@ async function productSeeder() {
         stock: "85",
         type: "Manga",
         categoryId: 1,
-        featured: true,
+        featured: false,
         pics: "One pice.jpg",
       },
       {
@@ -115,6 +115,7 @@ async function productSeeder() {
         pics: "Tokyo Ghoul Vol. 1.jpg",
       },
     ];
+    
     const comics = [
       {
         name: "Dead Pool V.1",
@@ -212,7 +213,7 @@ async function productSeeder() {
         stock: "25",
         type: "Cómic",
         categoryId: 2,
-        featured: true,
+        featured: false,
         pics: "Captain America The Winter Soldier.jpg",
       },
       {
@@ -227,6 +228,7 @@ async function productSeeder() {
         pics: "Guardians of the Galaxy Cosmic Avengers.jpg",
       },
     ];
+    
     const cards = [
       {
         name: "Magic: The Gathering - Black Lotus",
@@ -302,7 +304,7 @@ async function productSeeder() {
         stock: "3",
         type: "Carta Coleccionable",
         categoryId: 3,
-        featured: true,
+        featured: false,
         pics: "Magic The Gathering - Ancestral Recall.webp",
       },
       {
@@ -339,6 +341,8 @@ async function productSeeder() {
         pics: "Magic The Gathering - Time Walk.jpg",
       },
     ];
+    
+    
     
 
     products = [...mangas, ...comics, ...cards];
