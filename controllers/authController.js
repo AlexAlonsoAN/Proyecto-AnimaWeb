@@ -17,7 +17,7 @@ const authController = {
             { sub: admin.id, role: "Admin" },
             process.env.DB_TOKEN_SECRET
           );
-          return res.send( token);
+          return res.json({token,admin});
         }
       }
 
