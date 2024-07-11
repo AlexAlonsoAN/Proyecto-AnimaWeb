@@ -6,13 +6,14 @@ async function adminSeeder() {
   const hashedPassword = await bcrypt.hash("123", 10);
   const permanentAdmin = {
     id: 1,
-    name: "Francis",
+    name: "admin",
     surname: "Co",
-    email: "fco537@gmail.com",
-    password: hashedPassword,
+    email: "admin@admin.com",
+    password: "admin",
   };
-  permanentAdmin.push;
-  const admins = [];
+
+  const admins = [permanentAdmin]; // Añadir permanentAdmin al array admins
+
   for (let i = 0; i < 20; i++) {
     const name = faker.person.firstName();
     const newAdmin = {
@@ -23,6 +24,7 @@ async function adminSeeder() {
     };
     admins.push(newAdmin);
   }
+
   try {
     await Admin.bulkCreate(admins);
     console.log("Admin seeder is running!");

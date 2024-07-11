@@ -12,7 +12,7 @@ async function productSeeder() {
         stock: "50",
         type: "Manga",
         categoryId: 1,
-        featured: false,
+        featured: true,
         pics: "Attack On Titan V.1.jpg",
       },
       {
@@ -250,7 +250,7 @@ async function productSeeder() {
         type: "Carta Coleccionable",
         categoryId: 3,
         featured: false,
-        pics: "Pokémon - Charizard Holo 1st Edition.webp",
+        pics: "charizard.jpg",
       },
       {
         name: "Yu-Gi-Oh! - Blue-Eyes White Dragon",

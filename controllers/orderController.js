@@ -13,12 +13,13 @@ const orderController = {
   store: async (req, res) => {
     try {
       const order = req.body;
-      for (const product of order.productList) {
+      if(order.productList){
+      for (const product of JSON.parse(order.productList)) {
         const productInDb = await Product.findByPk(product.id);
         if (productInDb.stock < product.qty) {
         }
         product.price = productInDb.price;
-      }
+      }}
       order.status = "pending";
 
       for (const product of order.productList) {
