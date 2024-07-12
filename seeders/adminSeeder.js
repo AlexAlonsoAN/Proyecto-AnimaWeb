@@ -9,10 +9,10 @@ async function adminSeeder() {
     name: "admin",
     surname: "Co",
     email: "admin@admin.com",
-    password: "admin",
+    password: hashedPassword,
   };
 
-  const admins = [permanentAdmin]; // Añadir permanentAdmin al array admins
+  const admins = [permanentAdmin]; 
 
   for (let i = 0; i < 20; i++) {
     const name = faker.person.firstName();
