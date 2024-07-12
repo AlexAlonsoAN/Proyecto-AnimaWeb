@@ -67,7 +67,7 @@ async function productSeeder() {
         stock: "80",
         type: "Manga",
         categoryId: 1,
-        featured: true,
+        featured: false,
         pics: "One pice.jpg",
       },
       {

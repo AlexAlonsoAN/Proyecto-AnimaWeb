@@ -3,8 +3,16 @@ const { User } = require("../models");
 const bcrypt = require("bcryptjs");
 
 async function userSeeder() {
-  const users = [];
   const hashedPassword = await bcrypt.hash("123", 10);
+  const permanentUser = {
+    id: 1,
+    name: "user",
+    surname: "user",
+    email: "user@user.com",
+    password: hashedPassword,
+  };
+  const users = [permanentUser];
+
   for (let i = 0; i < 20; i++) {
     const name = faker.person.firstName();
     const newUser = {
