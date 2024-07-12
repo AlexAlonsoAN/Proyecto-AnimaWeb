@@ -14,7 +14,7 @@ const orderController = {
     try {
       const order = req.body;
       if(order.productList){
-      for (const product of JSON.parse(order.productList)) {
+      for (const product of order.productList) {
         const productInDb = await Product.findByPk(product.id);
         if (productInDb.stock < product.qty) {
         }
