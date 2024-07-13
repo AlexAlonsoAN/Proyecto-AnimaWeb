@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
 const User = require("./User");
@@ -14,11 +15,20 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: process.env.DB_CONNECTION,
-    dialectModule : require("pg"),
+    dialectModule: require("pg"),
     logging: false,
   }
-  
 );
+
+// Verificar la conexión antes de inicializar los modelos
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
 
 User.initModel(sequelize);
 Admin.initModel(sequelize);

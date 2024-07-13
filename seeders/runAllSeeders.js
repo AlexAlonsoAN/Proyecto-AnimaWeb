@@ -5,9 +5,9 @@ const productSeeder = require("./productSeeder");
 const categorySeeder = require("./categorySeeder");
 const orderSeeder = require("./orderSeeder");
 
+categorySeeder();
 userSeeder();
 adminSeeder();
-categorySeeder();
 productSeeder();
 orderSeeder();
 console.log("All seeders are running!");
