@@ -4,6 +4,7 @@ class Product extends Model {
   static initModel(sequelize) {
     Product.init(
       {
+        
         id: {
           type: DataTypes.BIGINT,
           primaryKey: true,
