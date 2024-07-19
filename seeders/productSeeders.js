@@ -93,7 +93,7 @@ async function productSeeder() {
       name,
       description,
       categoryId,
-      picture,
+      pics,
       price,
       stock,
       featured,
