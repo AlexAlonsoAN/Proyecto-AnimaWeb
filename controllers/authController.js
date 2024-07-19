@@ -1,41 +1,49 @@
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const { Admin, User } = require("../models");
+const { User, Admin } = require("../models");
+const bcrypt = require("bcryptjs");
 
 const authController = {
   getToken: async (req, res) => {
     try {
       const { email, password } = req.body;
-
-      const admin = await Admin.findOne({ where: { email } });
-      const user = await User.findOne({ where: { email } });
-
-      if (admin) {
-        const match = await bcrypt.compare(password, admin.password);
-        if (match) {
-          const token = jwt.sign(
-            { sub: admin.id, role: "Admin" },
-            process.env.DB_TOKEN_SECRET
-          );
-          return res.json({token,admin});
+      let role;
+      let id;
+      if (email && password) {
+        const user = await User.findOne({ where: { email } });
+        if (user) {
+          role = "user";
+          id = user.id;
+          if (!(await bcrypt.compare(password, user.password))) {
+            return res
+              .status(401)
+              .json({ message: "No user found or invalid password" });
+          }
+        } else {
+          const admin = await Admin.findOne({ where: { email } });
+          if (admin) {
+            role = "admin";
+            id = admin.id;
+            if (!(await bcrypt.compare(password, admin.password))) {
+              return res
+                .status(401)
+                .json({ message: "No user found or invalid password" });
+            }
+          } else {
+            return res
+              .status(401)
+              .json({ message: "No user found or invalid password" });
+          }
         }
+      } else {
+        return res.json({ message: "No body found" });
       }
+      const token = jwt.sign({ sub: id, role }, process.env.TOKEN_SECRET);
 
-      if (user) {
-        const match = await bcrypt.compare(password, user.password);
-        if (match) {
-          const token = jwt.sign(
-            { sub: user.id, role: "User" },
-            process.env.DB_TOKEN_SECRET
-          );
-          return res.send(token).json();
-        }
-      }
-
-      return res.json({ message: "Invalid Credentials" });
-    } catch (error) {
-      console.log(error);
-      return res.status(500).json({ message: "Internal Server Error" });
+      return res.status(200).json({ token });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: "Internal server error" });
     }
   },
 };

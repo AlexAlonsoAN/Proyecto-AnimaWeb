@@ -1,11 +1,11 @@
-require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
 const User = require("./User");
-const Admin = require("./Admin");
-const Order = require("./Order");
 const Product = require("./Product");
+const Order = require("./Order");
+const Admin = require("./Admin");
 const Category = require("./Category");
+const OrderProducts = require("./OrderProducts");
 
 const sequelize = new Sequelize(
   process.env.DB_DATABASE,
@@ -13,39 +13,35 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     dialect: process.env.DB_CONNECTION,
     dialectModule: require("pg"),
     logging: false,
-    }
+  }
 );
 
-// Verificar la conexión antes de inicializar los modelos
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection has been established successfully.");
-  })
-  .catch((err) => {
-    console.error("Unable to connect to the database:", err);
-  });
-
 User.initModel(sequelize);
-Admin.initModel(sequelize);
-Order.initModel(sequelize);
-Category.initModel(sequelize);
 Product.initModel(sequelize);
-
-Product.belongsTo(Category);
-Category.hasMany(Product);
+Order.initModel(sequelize);
+Admin.initModel(sequelize);
+Category.initModel(sequelize);
+OrderProducts.initModel(sequelize);
 
 User.hasMany(Order);
 Order.belongsTo(User);
 
+Category.hasMany(Product);
+Product.belongsTo(Category);
+
+Order.belongsToMany(Product, { through: OrderProducts });
+Product.belongsToMany(Order, { through: OrderProducts });
+
 module.exports = {
   sequelize,
   User,
-  Admin,
-  Order,
   Product,
+  Order,
+  Admin,
   Category,
+  OrderProducts,
 };

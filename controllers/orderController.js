@@ -1,60 +1,104 @@
-const { Product, Order } = require("../models");
+const { Order, Product, User, OrderProducts } = require("../models");
 
 const orderController = {
   index: async (req, res) => {
-    const order = await Order.findAll({ include: "user" });
-    return res.json(order);
-  },
-  show: async (req, res) => {
-    const { id } = req.params;
-    const order = await Order.findByPk(id);
-    return res.json(order);
-  },
-  store: async (req, res) => {
     try {
-      const order = req.body;
-      if(order.productList){
-      for (const product of order.productList) {
-        const productInDb = await Product.findByPk(product.id);
-        if (productInDb.stock < product.qty) {
-        }
-        product.price = productInDb.price;
-      }}
-      order.status = "pending";
-
-      for (const product of order.productList) {
-        const productInDb = await Product.findByPk(product.id);
-
-        productInDb.stock = productInDb.stock - product.qty;
-      }
-      order.userId = 1;
-      await Order.create(order);
-      res.send("orden guardada");
-    } catch (err) {
-      console.log(err);
-      return res.json({ message: "error Order drop the table" });
+      const orders = await Order.findAll();
+      return res.json(orders);
+    } catch (error) {
+      console.error("Error fetching order:", error);
+      return res
+        .status(500)
+        .json({ message: "Internal server error while fetching orders" });
     }
   },
-  
 
-  update: async (req, res) => {
-    const { id } = req.params;
-    const order = await Order.findByPk(id);
-    order.status = "declined";
-    await order.save();
-    console.log(order);
-    res.send("save order!");
+  show: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const order = await Order.findByPk(id);
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+
+      return res.json(order);
+    } catch (error) {
+      console.error("Error fetching order:", error);
+      return res
+        .status(500)
+        .json({ message: "Internal server error while fetching order" });
+    }
   },
 
+  store: async (req, res) => {
+    try {
+      //const user Id = req.auth.id; No logre traer el userId del token, preguntar
+      const order = req.body;
+      
+      const orderCreated = await Order.create(order);
+      // orderCreated.userId = userId;
+      // console.log(orderCreated);
+      // orderCreated.save();
+      
+      for (const product of order.itemsList) {
+        const productInDB = await Product.findByPk(product.id);
+        if (!productInDB || productInDB.stock < product.qty) {
+          return res.json({ message: "Oops, something went wrong." });
+        }
+        await OrderProducts.create({orderId:orderCreated.id,productId:product.id,quantity:product.quantity});
+        productInDB.stock -= product.quantity;
+        await productInDB.save();
+      }
+      return res.json({ message: "Order placed successfully." });
+    } catch (err) {
+      console.error(err);
+      return res.json({ message: "Oops, something went wrong." });
+    }
+  },
+
+  update: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { address, status } = req.body;
+
+      const order = await Order.findByPk(id);
+
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+
+      // if (productsList) order.name = productsList;
+      if (address) order.address = address;
+      if (status) order.status = status;
+
+      await order.save();
+
+      return res.send("Order modified successfully!");
+    } catch (error) {
+      console.error("Error updating order:", error);
+      return res
+        .status(500)
+        .json({ message: "Internal server error while updating order" });
+    }
+  },
   destroy: async (req, res) => {
-    const { id } = req.params;
-    const order = await Order.findByPk(id);
-    await Order.destroy({
-      where: {
-      id: order.id,
-      },
-     });
- return res.send("Order was succesfully deleted!");
+    try {
+      const { id } = req.params;
+      const order = await Order.findByPk(id);
+
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+
+      await order.destroy();
+
+      return res.status(200).json({ message: "Order deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting order:", error);
+      return res
+        .status(500)
+        .json({ message: "Internal server error while deleting order" });
+    }
   },
 };
 

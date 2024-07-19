@@ -1,40 +1,43 @@
 require("dotenv").config();
 const { expressjwt: checkJwt } = require("express-jwt");
 const express = require("express");
-const router = express.Router();
 const userRoutes = require("./userRoutes");
-const adminRoutes = require("./adminRoutes");
+const categoryRoutes = require("./categoryRoutes");
 const productRoutes = require("./productRoutes");
 const orderRoutes = require("./orderRoutes");
-const categoryRoutes = require("./categoryRoutes");
+const orderProductsRoutes = require("./orderProductsRoutes");
+const adminRoutes = require("./adminRoutes");
 const authRoutes = require("./authRoutes");
-const IsAdmin = require("../middlewares/isAdmin").default;
-const isUser = require("../middlewares/isUser").default;
+const isAdmin = require("../middlewares/isAdmin");
+const isUser = require("../middlewares/isUser");
+const router = express.Router();
 
 router.use(express.json());
-
-router.use("/tokens", authRoutes); // hecho
-
-router.use("/users", userRoutes);
-
 router.use(
-  "/admins", // hecho
-  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
-  IsAdmin,
+  "/admins",
+  checkJwt({ secret: process.env.TOKEN_SECRET, algorithms: ["HS256"] }),
+  isAdmin,
   adminRoutes
 );
 
-router.use("/products", productRoutes);
-// hecho
-
 router.use(
-  // hecho
   "/orders",
-  checkJwt({ secret: process.env.DB_TOKEN_SECRET, algorithms: ["HS256"] }),
-
+  checkJwt({ secret: process.env.TOKEN_SECRET, algorithms: ["HS256"] }),
+  isUser,
   orderRoutes
 );
-
+router.use(
+  "/orderProducts",
+  checkJwt({ secret: process.env.TOKEN_SECRET, algorithms: ["HS256"] }),
+  isUser,
+  orderProductsRoutes
+);
+router.use("/products", productRoutes);
+router.use("/tokens", authRoutes);
+router.use(
+  "/users",
+  checkJwt({ secret: process.env.TOKEN_SECRET, algorithms: ["HS256"] }),
+  userRoutes
+);
 router.use("/categories", categoryRoutes);
-
 module.exports = router;

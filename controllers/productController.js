@@ -2,47 +2,105 @@ const { Product } = require("../models");
 
 const productController = {
   index: async (req, res) => {
-  
-    const product = await Product.findAll();
-    return res.json(product);
+    try {
+      const products = await Product.findAll();
+      return res.json(products);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      return res
+        .status(500)
+        .json({ message: "Internal server error while fetching products" });
+    }
   },
+
   show: async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findByPk(id);
-    return res.json(product);
+    try {
+      const { id } = req.params;
+      const product = await Product.findByPk(id);
+
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+
+      return res.json(product);
+    } catch (error) {
+      console.error("Error fetching product:", error);
+      return res
+        .status(500)
+        .json({ message: "Internal server error while fetching product" });
+    }
   },
+
   store: async (req, res) => {
-    const { name, description, price, pics, stock, featured } = req.body;
-    await Product.create({ name, description, price, pics, stock, featured });
-    return res.send("Product was succesfully created!");
+    try {
+      const { name, description, picture, price, stock, featured, categoryId } =
+        req.body;
+      await Product.create({
+        name,
+        description,
+        picture,
+        price,
+        stock,
+        featured,
+        categoryId,
+      });
+      return res.send("Product created successfully!");
+    } catch (error) {
+      console.error("Error creating user:", error);
+      return res
+        .status(500)
+        .json({ message: "Internal server error while creating user" });
+    }
   },
 
   update: async (req, res) => {
-    const { id } = req.params;
-    const { name, description, price, pics, stock, featured } = req.body;
+    try {
+      const { id } = req.params;
+      const { name, description, pics, price, stock, featured, categoryId } =
+        req.body;
 
-    const product = await Product.findByPk(id);
+      const product = await Product.findByPk(id);
 
-    if (name) product.name = name;
-    if (description) product.description = description;
-    if (price) product.price = price;
-    if (pics) product.pics = pics;
-    if (stock) product.stock = stock;
-    if (featured) product.featured = featured;
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
 
-    await product.save();
+      if (name) product.name = name;
+      if (description) product.description = description;
+      if (pics) product.pics = pics;
+      if (price) product.price = price;
+      if (stock) product.stock = stock;
+      if (featured) product.featured = featured;
+      if (categoryId) product.categoryId = categoryId;
 
-    return res.send("Product was succesfully updated!");
+      await product.save();
+
+      return res.send("Product modified successfully!");
+    } catch (error) {
+      console.error("Error updating product:", error);
+      return res
+        .status(500)
+        .json({ message: "Internal server error while updating product" });
+    }
   },
   destroy: async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findByPk(id);
-    await Product.destroy({
-      where: {
-      id: product.id,
-      },
-     });
-    return res.send("Product was succesfully deleted!");
+    try {
+      const { id } = req.params;
+      const product = await Product.findByPk(id);
+
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+
+      await product.destroy();
+
+      return res.status(200).json({ message: "Product deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      return res
+        .status(500)
+        .json({ message: "Internal server error while deleting product" });
+    }
   },
 };
 

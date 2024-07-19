@@ -1,74 +1,109 @@
-const isUser = require("../middlewares/isUser").default;
 const { User } = require("../models");
 const bcrypt = require("bcryptjs");
 
 const userController = {
-  // index: nombre que utilizamos para el método que trae todos los usuarios
-  index: async (req, res) => {
-    const users = await User.findAll();
-    return res.json(users);
-  },
-  // show: nombre que utilizamos para el método que trae a uno de los usuarios
-  show: async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findByPk(id);
-    return res.json(user);
-  },
-  store: async (req, res) => {
-    const { name, surname, email, phonenumber, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    console.log(hashedPassword);
-    await User.create({
-      name,
-      surname,
-      email,
-      phonenumber,
-      password: hashedPassword,
-    });
+    index: async (req, res) => {
+        try {
+            const users = await User.findAll();
+            return res.json(users);
+        } catch (error) {
+            console.error("Error fetching users:", error);
+            return res.status(500).json({
+                message: "Internal server error while fetching users",
+            });
+        }
+    },
+    show: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const user = await User.findByPk(id);
 
-    return res.send("User was succesfully created!");
-  },
-  update: async (req, res) => {
-    const { id } = req.params;
-    const { name, surname, email, phonenumber, password } = req.body;
+            if (!user) {
+                return res.status(404).json({ message: "User not found" });
+            }
 
-    const user = await User.findByPk(id);
+            return res.json(user);
+        } catch (error) {
+            console.error("Error fetching user:", error);
+            return res
+                .status(500)
+                .json({ message: "Internal server error while fetching user" });
+        }
+    },
+    store: async (req, res) => {
+        try {
+            const { firstname, lastname, email, password } = req.body;
+            if (firstname && lastname && email && password) {
+                const hashedPassword = await bcrypt.hash(password, 10);
+                await User.create({
+                    firstname,
+                    lastname,
+                    email,
+                    password: hashedPassword,
+                });
+                return res.send("User created successfully!");
+            } else {
+                return res
+                    .status(400)
+                    .json({ message: "Atleast one value is empty" });
+            }
+        } catch (error) {
+            console.error("Error creating user:", error);
+            return res
+                .status(500)
+                .json({ message: "Internal server error while creating user" });
+        }
+    },
+    update: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { firstname, lastname, email, password } = req.body;
 
-    if (name) user.name = name;
-    if (surname) user.surname = surname;
-    if (email) user.email = email;
-    if (password) user.password = password;
-    if (phonenumber) user.phonenumber = phonenumber;
+            const user = await User.findByPk(id);
 
-    await user.save();
+            if (!user) {
+                return res.status(404).json({ message: "User not found" });
+            }
 
-    return res.send("User was succesfully updated!");
-  },
-  destroy: async (req, res) => {
-    const { id } = req.params;
+            if (firstname) user.firstname = firstname;
+            if (lastname) user.lastname = lastname;
+            if (email) user.email = email;
 
-    const role = req.auth.role;
-    const subId = req.auth.sub;
-    if (role === "User" && id == subId) {
-      await User.destroy({
-        where: {
-          id: subId,
-        },
-      });
-      res.send(`User   was succesfully deleted!`);
-    } else if (role === "Admin") {
-      const user = await User.findByPk(id);
-      await User.destroy({
-        where: {
-          email: user.email,
-        },
-      });
+            if (password) {
+                const hashedPassword = await bcrypt.hash(password, 10);
+                user.password = hashedPassword;
+            }
+            await user.save();
 
-      res.send(`User   was succesfully deleted!`);
-    } else {
-      return res.send("No results");
-    }
-  },
+            return res.send("User modified successfully!");
+        } catch (error) {
+            console.error("Error updating user:", error);
+            return res
+                .status(500)
+                .json({ message: "Internal server error while updating user" });
+        }
+    },
+    destroy: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const user = await User.findByPk(id);
+
+            if (!user) {
+                return res.status(404).json({ message: "User not found" });
+            }
+
+            await user.destroy();
+
+            return res
+                .status(200)
+                .json({ message: "User deleted successfully" });
+        } catch (error) {
+            console.error("Error deleting user:", error);
+            return res
+                .status(500)
+                .json({ message: "Internal server error while deleting user" });
+        }
+    },
 };
 
 module.exports = userController;

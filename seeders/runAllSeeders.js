@@ -1,13 +1,20 @@
-require("dotenv").config();
-const userSeeder = require("./userSeeder");
-const adminSeeder = require("./adminSeeder");
-const productSeeder = require("./productSeeder");
-const categorySeeder = require("./categorySeeder");
-const orderSeeder = require("./orderSeeder");
+require("dotenv").config(); //para que corran las variables
+const userSeeder = require("./userSeeders");
+const adminSeeder = require("./adminSeeders");
+const categorySeeder = require("./categorySeeders");
+const orderSeeder = require("./orderSeeders");
+const productSeeder = require("./productSeeders");
+const orderProductsSeeder = require("./orderProductsSeeders")
 
-categorySeeder();
-userSeeder();
-adminSeeder();
-productSeeder();
-orderSeeder();
-console.log("All seeders are running!");
+runSeeders();
+
+async function runSeeders() {
+    await userSeeder();
+    await adminSeeder();
+    await categorySeeder();
+    await productSeeder();
+    await orderSeeder();
+    await orderProductsSeeder();
+
+    console.log("The seeders ran");
+}

@@ -1,16 +1,5 @@
 {
-  "products": [
-    {
-      "id": 1,
-      "name": "Lorem",
-      "qty": 3
-    },
-    {
-      "id": 2,
-      "name": "Ipsum",
-      "qty": 2
-    }
-  ],
-  "userId": 1,
-  "address": "Canelones 2253"
+  "title": "Vida y obra de Cervantes",
+  "content": "Asdjio jiroek fedwopweko korpeko kopekowp kopkopwwes. Asdp ope ioasio nieow.",
+  "userId": 1
 }
