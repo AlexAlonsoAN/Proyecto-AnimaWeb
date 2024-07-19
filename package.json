@@ -1,38 +1,15 @@
 {
-  "name": "ha-ecommerce-example-api",
-  "version": "1.0.0",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HackAcademyDev/ha-ecommerce-example-api.git"
-  },
-  "author": "Hack Academy",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HackAcademyDev/ha-ecommerce-example-api/issues"
-  },
-  "homepage": "https://github.com/HackAcademyDev/ha-ecommerce-example-api#readme",
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@reduxjs/toolkit": "^2.2.5",
-    "@supabase/supabase-js": "^2.44.3",
-    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-jwt": "^8.4.1",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^2.3.3",
-    "nodemon": "^3.1.4",
+    "mysql2": "^3.9.4",
+    "nodemon": "^3.1.0",
     "pg": "^8.12.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.3"
-  },
-  "keywords": [],
-  "description": ""
+  }
 }
