@@ -1,2 +1,2 @@
-import app from "../server"
-module.exports = app;
+import app from "../server";
+export default app;
