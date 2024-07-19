@@ -8,8 +8,8 @@ const productRoutes = require("./productRoutes");
 const orderRoutes = require("./orderRoutes");
 const categoryRoutes = require("./categoryRoutes");
 const authRoutes = require("./authRoutes");
-const IsAdmin = require("../middlewares/isAdmin");
-const isUser = require("../middlewares/isUser");
+const IsAdmin = require("../middlewares/isAdmin").default;
+const isUser = require("../middlewares/isUser").default;
 
 router.use(express.json());
 

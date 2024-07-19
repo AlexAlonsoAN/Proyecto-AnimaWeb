@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const categoryController = require("../controllers/categoryController");
 const { expressjwt: checkJwt } = require("express-jwt");
-const isAdmin = require("../middlewares/isAdmin");
+const isAdmin = require("../middlewares/isAdmin").default;
 
 
 router.get("/", categoryController.index);

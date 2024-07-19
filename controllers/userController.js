@@ -1,4 +1,4 @@
-const isUser = require("../middlewares/isUser");
+const isUser = require("../middlewares/isUser").default;
 const { User } = require("../models");
 const bcrypt = require("bcryptjs");
 

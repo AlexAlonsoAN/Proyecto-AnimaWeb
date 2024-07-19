@@ -7,4 +7,4 @@ function isUser(req, res, next) {
   }
 }
 
-module.exports = isUser;
+export default isUser;
